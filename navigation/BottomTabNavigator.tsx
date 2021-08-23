@@ -10,7 +10,8 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/Today';
+import Today from '../screens/Today';
+import Edits from '../screens/Edits';
 import TabTwoScreen from '../screens/History';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
@@ -21,7 +22,7 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Today"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
         name="Today"
@@ -47,6 +48,8 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']
   return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
+
+
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 const TabOneStack = createStackNavigator<TabOneParamList>();
@@ -56,7 +59,7 @@ function TabOneNavigator() {
     <TabOneStack.Navigator>
       <TabOneStack.Screen
         name="TabOneScreen"
-        component={TabOneScreen}
+        component={Today}
         options={{ headerTitle: 'What are you doing today ?' }}
       />
     </TabOneStack.Navigator>
@@ -67,11 +70,17 @@ const TabTwoStack = createStackNavigator<TabTwoParamList>();
 
 function TabTwoNavigator() {
   return (
-    <TabTwoStack.Navigator>
+    <TabTwoStack.Navigator
+    initialRouteName="TabTwoScreen">
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
         options={{ headerTitle: 'History' }}
+      />
+      <TabTwoStack.Screen
+        name="EditHistory"
+        component={Edits}
+        options={{ headerTitle: 'Edit' }}
       />
     </TabTwoStack.Navigator>
   );

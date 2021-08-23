@@ -22,14 +22,12 @@ function getDateFromDateString(dateString: string){
   return date;
 }
 
-export default function TabOneScreen() {
+export default function Edits(props) {
 
-  const [ date, setDate ] = React.useState(getDateFromDateString(JSON.stringify(new Date())));
-  console.log(date)
+  const [ date, setDate ] = React.useState(props.route.params.date || getDateFromDateString(JSON.stringify(new Date())));
+    console.log(props)
   return(
-
       <TimeLists date={date} />
-
   )
 }
 
