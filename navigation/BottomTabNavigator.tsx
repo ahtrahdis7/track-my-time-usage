@@ -71,7 +71,7 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']
       borderRadius: 5,
     }}>
       <Text>
-      <Ionicons size={40} style={{ marginBottom: 0 }} {...props} />
+        <Ionicons size={25} style={{ marginBottom: 0 }} {...props} />
       </Text>
     </View>
   )

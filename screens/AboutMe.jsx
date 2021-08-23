@@ -1,14 +1,23 @@
 import * as React from 'react';
-import { StyleSheet, Image, Pressable } from 'react-native';
+import { StyleSheet, Image, Pressable, ScrollView } from 'react-native';
 // import { WebView } from 'react-native-webview';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Text, View } from '../components/Themed';
 import Pic from '../assets/images/me.jpg';
+import Colors from '../constants/Colors';
+import useColorScheme from '../hooks/useColorScheme';
 
 export default function AboutMe({ navigation }){
     // console.log("about is being rendered")
+    const colorScheme = useColorScheme();
     return(
-        <View style={styles.container}>
+        <ScrollView style={{
+            flex: 1,
+            textAlign: 'center',
+            margin: 1,
+            padding: 10,
+            backgroundColor: Colors[colorScheme].background,
+        }}>
             <Image style={styles.image} source={Pic} />
             <Text style={styles.textHeader}>Hey, I am Sidhartha</Text>
             <Text style={styles.textNormal}>I took inspiration about for this application from one of Ankur Warikoo's strategy for measuring and increasing effective time usage.</Text>
@@ -34,7 +43,7 @@ export default function AboutMe({ navigation }){
                     <Text style={{color: 'blue'}} > Web:// ahtrahdis7.netlify.app</Text>
                 </Pressable>
             </View>
-        </View>
+        </ScrollView>
     )
 }
 
