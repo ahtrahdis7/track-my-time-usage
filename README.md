@@ -20,3 +20,5 @@ yarn install
 yarn android
 ```
 This app is not yet tested on iOS devices.
+
+> I took inspiration for this application from one of Ankur Warikoo's strategies for measuring and increasing effective time usage.
