@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import { StyleSheet, ScrollView } from 'react-native';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 // import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
-import CustomInput from '../components/TextInput';
+
+// import CustomInput from '../components/TextInput';
 import TimeLists from '../components/TimeLists';
 
 
@@ -25,27 +25,27 @@ function getDateFromDateString(dateString: string){
 export default function Edits(props) {
 
   const [ date, setDate ] = React.useState(props.route.params.date || getDateFromDateString(JSON.stringify(new Date())));
-    console.log(props)
+    // console.log(props)
   return(
       <TimeLists date={date} />
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    margin: 10,
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     // flexDirection: 'row',
+//     alignItems: 'center',
+//     justifyContent: 'flex-start',
+//   },
+//   title: {
+//     fontSize: 20,
+//     fontWeight: 'bold',
+//     margin: 10,
+//   },
+//   separator: {
+//     marginVertical: 30,
+//     height: 1,
+//     width: '80%',
+//   },
+// });

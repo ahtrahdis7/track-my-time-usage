@@ -3,7 +3,7 @@ import { StyleSheet, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import DateCard from '../components/DateCards';
-import { Text, View } from '../components/Themed';
+import { View } from '../components/Themed';
 
 export default function TabTwoScreen({ navigation }) {
   const [ allDatesData, setData ] = React.useState([]);
@@ -22,7 +22,7 @@ export default function TabTwoScreen({ navigation }) {
       setData(allData);
     };
     getKeys();
-    console.log(navigation)
+    // console.log(navigation)
   },[]);
 
   return (

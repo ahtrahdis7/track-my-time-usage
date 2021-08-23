@@ -50,12 +50,12 @@ export default function CustomTextInput(props){
                 let eff = 0;
                 for(let entry in prevData){
                     if(entry !== "eff"){
-                        eff += parseInt(prevData[entry].eff)/14.0;
+                        eff += (parseInt(prevData[entry].eff))/14.0;
                     }   
                 }
 
                 if(inputTask !== "...task" ) SET_COLOR("#8affa9");
-                console.log(inputTime)
+                // console.log(inputTime)
                 if(inputEff >= 7) SET_EFF_COLOR("#8affa9");
                 else if(inputEff >= 4) SET_EFF_COLOR("#ffbd7a")
                 else SET_EFF_COLOR("#ff7a7a")

@@ -11,10 +11,16 @@ export type RootStackParamList = {
 export type BottomTabParamList = {
   TabOne: undefined;
   TabTwo: undefined;
+  AboutMe: undefined;
 };
 
 export type TabOneParamList = {
   TabOneScreen: undefined;
+};
+
+export type AboutMeParamList = {
+  Me: undefined;
+  web: undefined;
 };
 
 export type TabTwoParamList = {
