@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 // import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from './Themed';
+import { Text, View, KeyboardAvoidingView } from './Themed';
 import CustomInput from './TextInput';
 
 let timeArray =  [
@@ -52,25 +52,29 @@ export default function TimeLists(props) {
   },[date, eff])
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{date}</Text>
-      <Text style={{
-        backgroundColor: EFF_COLOR,
-        padding: 5,
-        borderRadius: 5,
-      }}>Time Efficieny : {eff}</Text>
-      <ScrollView>
-        {timeArray.map((time) => {
-          return <CustomInput key={time} time={time} date={date} updateEff={updateEff}/>
-        })}
-      </ScrollView>
-    </View>
+      <KeyboardAvoidingView 
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.container}>
+            <Text style={styles.title}>{date}</Text>
+            <Text style={{
+                backgroundColor: EFF_COLOR,
+                padding: 5,
+                borderRadius: 5,
+            }}>Time Efficieny : {eff}</Text>
+            <ScrollView >
+                {timeArray.map((time) => {
+                return <CustomInput key={time} time={time} date={date} updateEff={updateEff}/>
+                })}
+            </ScrollView>
+      </KeyboardAvoidingView>
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingBottom: 100,
     // flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
