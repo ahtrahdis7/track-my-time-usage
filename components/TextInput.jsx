@@ -1,9 +1,9 @@
 import React from "react";
-import { Pressable, View, TextInput, StyleSheet, Text } from 'react-native';
+import { Pressable, TextInput, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
-
+import useColorScheme from "../hooks/useColorScheme";
+import { View, Text } from "./Themed";
+import Colors from "../constants/Colors";
 /**
  *
  *
@@ -11,10 +11,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
  * @param {*} props
  * @return {*} 
  */
+
+
 export default function CustomTextInput(props){
+    const colorScheme = useColorScheme();
+    // console.log(colorScheme)
     const [ inputTask, onChangeinputTask ] = React.useState("...task");
     const [ inputEff, onChangeinputEff ] = React.useState("0");
-    const [ COLOR, SET_COLOR ] = React.useState("#e6e6e6");
+    const [ COLOR, SET_COLOR ] = React.useState(Colors[colorScheme].timeBackground);
     const [ EFF_COLOR, SET_EFF_COLOR ] = React.useState("#ff7a7a");
     let key = props.date
     , inputTime = props.time;
@@ -28,8 +32,8 @@ export default function CustomTextInput(props){
             prevData = JSON.parse(prevData);
             onChangeinputEff(prevData[inputTime] != undefined ? prevData[inputTime].eff: "0");
             onChangeinputTask(prevData[inputTime] != undefined ? prevData[inputTime].task: "...task");
-            if(inputTask !== "...task" ) SET_COLOR("#8affa9");
-            if(inputTime >= parseInt(7) ) SET_EFF_COLOR("#8affa9");
+            if(inputTask !== "...task" ) SET_COLOR(Colors[colorScheme].tbf);
+            if(inputTime >= parseInt(7) ) SET_EFF_COLOR(Colors[colorScheme].tbf);
             else if(inputTime >= 4) SET_EFF_COLOR("#ffbd7a")
             else SET_EFF_COLOR("#ff7a7a")
         };
@@ -54,9 +58,9 @@ export default function CustomTextInput(props){
                     }   
                 }
 
-                if(inputTask !== "...task" ) SET_COLOR("#8affa9");
+                if(inputTask !== "...task" ) SET_COLOR(Colors[colorScheme].tbf);
                 // console.log(inputTime)
-                if(inputEff >= 7) SET_EFF_COLOR("#8affa9");
+                if(inputEff >= 7) SET_EFF_COLOR(Colors[colorScheme].tbf);
                 else if(inputEff >= 4) SET_EFF_COLOR("#ffbd7a")
                 else SET_EFF_COLOR("#ff7a7a")
 
@@ -81,9 +85,19 @@ export default function CustomTextInput(props){
                 padding: 10,
                 textAlign: 'center',
                 backgroundColor: COLOR,
+                // color: 
             }}> {inputTime} </Text>
             <TextInput 
-            style={styles.inputTask}
+            style={{
+                height: 40,
+                margin: 5,
+                borderWidth: 1,
+                borderRadius: 5,
+                width: 200,
+                padding: 10,
+                backgroundColor: Colors[colorScheme].timeBackground,
+                color: Colors[colorScheme].text,
+            }}
             onChangeText={onChangeinputTask}
             value={inputTask} 
             />
@@ -121,7 +135,7 @@ const styles = StyleSheet.create({
         width: 60,
         padding: 10,
         textAlign: 'center',
-        // backgroundColor: COLOR,
+        
     },
     inputTask: {
         height: 40,
@@ -130,6 +144,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         width: 200,
         padding: 10,
+        // backgroundColor: Colors[colorScheme].timeBackground,
     },
     inputEff: {
         height: 40,
