@@ -1,5 +1,8 @@
 # Track My Time Usage
 
+> I took inspiration for this application from one of Ankur Warikoo's strategies for measuring and increasing effective time usage.
+
+
 This app is being developed with the true purpose to measure your `time efficiency`.
 The effective time usage in a 14hr slot all through the day. Here, you are given an input box to grade your time usage for every hour of the day. 
 
@@ -21,4 +24,3 @@ yarn android
 ```
 This app is not yet tested on iOS devices.
 
-> I took inspiration for this application from one of Ankur Warikoo's strategies for measuring and increasing effective time usage.
