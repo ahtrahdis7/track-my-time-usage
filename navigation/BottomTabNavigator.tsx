@@ -30,7 +30,7 @@ export default function BottomTabNavigator() {
         activeTintColor: Colors[colorScheme].tint, 
         keyboardHidesTabBar: true,
         style: {
-          height: 60,
+          height: 50,
           borderTopColor: "#ffffff"
         }
       }}
@@ -39,21 +39,21 @@ export default function BottomTabNavigator() {
         name="Current"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="bar-chart" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="Past Eff"
+        name="Archives"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="bookmarks" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="archive-sharp" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="Developer"
+        name="About"
         component={DevNav}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="person" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="information-circle" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -124,7 +124,7 @@ function DevNav() {
       <DevStackNavigator.Screen
         name="Me"
         component={AboutMe}
-        options={{ headerTitle: 'About ME' }}
+        options={{ headerTitle: 'About' }}
       />
       <DevStackNavigator.Screen
         name="Web"

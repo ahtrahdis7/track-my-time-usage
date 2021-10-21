@@ -1,11 +1,14 @@
 import * as React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 // import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View, KeyboardAvoidingView } from './Themed';
 import CustomInput from './TextInput';
+
+const WIDTH = Dimensions.get('window').width;
+const HEIGHT = Dimensions.get('window').height;
 
 let timeArray =  [
   '10:00', '11:00',
@@ -43,8 +46,8 @@ export default function TimeLists(props) {
       data = JSON.parse(data);
       let eff = Math.round(data.eff * 100) / 100
       setEff(eff);
-      if(eff >= 5) SET_EFF_COLOR("#8affa9");
-      else if(eff >= 3) SET_EFF_COLOR("#ffbd7a")
+      if(eff >= 5) SET_EFF_COLOR("#013220");
+      else if(eff >= 3) SET_EFF_COLOR("#ee7600")
       else SET_EFF_COLOR("#ff7a7a")
 
     };
@@ -55,12 +58,17 @@ export default function TimeLists(props) {
       <KeyboardAvoidingView 
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}>
-            <Text style={styles.title}>{date}</Text>
-            <Text style={{
-                backgroundColor: EFF_COLOR,
-                padding: 5,
-                borderRadius: 5,
-            }}>Time Efficieny : {eff}</Text>
+            <View style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between'
+            }}>
+              <Text style={styles.title}>{date}</Text>
+              <Text style={[{
+                  color: EFF_COLOR,
+                  // padding: 5,
+                  // borderRadius: 5,
+              }, styles.title]}>η : {eff}</Text>
+            </View>
             <ScrollView >
                 {timeArray.map((time) => {
                 return <CustomInput key={time} time={time} date={date} updateEff={updateEff}/>
@@ -74,18 +82,18 @@ export default function TimeLists(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingBottom: 100,
+    // paddingBottom: HEIGHT/25,
     // flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    // justifyContent: 'flex-start',
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    margin: 10,
+    margin: 5,
   },
   separator: {
-    marginVertical: 30,
+    // marginVertical: WIDTH/25,
     height: 1,
     width: '80%',
   },
